@@ -1,17 +1,29 @@
 const url = "./assets/data/data.json";
 const container = document.querySelector(".main-content");
-let counter = 0;
+const filterBtn = document.querySelector(".filter-button");
+const filterBox = document.querySelector(".filter-options");
+const filterAmerica = document.querySelector("#filterAmerica");
+const filterAfrica = document.querySelector("#filterAfrica");
+const filterAsia = document.querySelector("#filterAsia");
+const filterEurope = document.querySelector("#filterEurope");
+const filterOceania = document.querySelector("#filterOceania");
+const filterAll = document.querySelector("#filterAll");
+let boxesArr = [];
+
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
-    gen(data);
+    boxesArr = gen(data);
   });
 
 function gen(box) {
+  const boxes = [];
   box.forEach(function (createBox) {
     const box = document.createElement("div");
     box.className = "content-box";
+    box.dataset.region = createBox.region;
     container.appendChild(box);
+    boxes.push(box);
 
     const img = document.createElement("img");
     img.classList = "flag";
@@ -55,4 +67,29 @@ function gen(box) {
     details.appendChild(detailThree);
     detailThree.appendChild(capital);
   });
+  return boxes;
 }
+// filter show
+filterBtn.addEventListener("click", filterBoxShow);
+function filterBoxShow() {
+  filterBox.classList.toggle("show");
+}
+function filter(reg) {
+  boxesArr.forEach(function (box) {
+    box.classList.remove("hide");
+    if (box.dataset.region !== reg) {
+      box.classList.add("hide");
+    }
+  });
+}
+function showAll() {
+  boxesArr.forEach(function (box) {
+    box.classList.remove("hide");
+  });
+}
+filterAmerica.addEventListener("click", () => filter("Americas"));
+filterAfrica.addEventListener("click", () => filter("Africa"));
+filterEurope.addEventListener("click", () => filter("Europe"));
+filterAsia.addEventListener("click", () => filter("Asia"));
+filterOceania.addEventListener("click", () => filter("Oceania"));
+filterAll.addEventListener("click", () => showAll());
