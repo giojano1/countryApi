@@ -60,6 +60,7 @@ main {
   position: absolute;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   top: 50px;
+  z-index: 2;
 }
 .result {
   margin-top: 10px;
@@ -142,4 +143,43 @@ main {
 }
 .details p span {
   font-weight: normal;
+}
+
+@media screen and (max-width: 870px) {
+  .content-box {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 650px) {
+  #search {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 550px) {
+  #search {
+    width: 250px;
+  }
+  .content-box {
+    width: 47%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .main-header {
+    flex-direction: column;
+    width: 100%;
+  }
+  .searchbar {
+    width: 100%;
+  }
+  #search {
+    width: 100% !important;
+  }
+  .filter-button {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .content-box {
+    width: 100%;
+  }
 }
