@@ -8,6 +8,8 @@ const filterAsia = document.querySelector("#filterAsia");
 const filterEurope = document.querySelector("#filterEurope");
 const filterOceania = document.querySelector("#filterOceania");
 const filterAll = document.querySelector("#filterAll");
+const search = document.querySelector("#search");
+const searchResult = document.querySelector(".search-result");
 let boxesArr = [];
 
 fetch(url)
@@ -22,6 +24,7 @@ function gen(box) {
     const box = document.createElement("div");
     box.className = "content-box";
     box.dataset.region = createBox.region;
+    box.dataset.country = createBox.name.toLowerCase();
     container.appendChild(box);
     boxes.push(box);
 
@@ -93,3 +96,42 @@ filterEurope.addEventListener("click", () => filter("Europe"));
 filterAsia.addEventListener("click", () => filter("Asia"));
 filterOceania.addEventListener("click", () => filter("Oceania"));
 filterAll.addEventListener("click", () => showAll());
+
+// search.addEventListener("input", () => {
+//   if (search.value !== "") {
+//     searchResult.style.display = "block";
+//   } else {
+//     searchResult.style.display = "none";
+//   }
+
+//   boxesArr.forEach(function (box) {
+//     const country = box.dataset.country;
+//     const searchValue = search.value.toLowerCase();
+//     const result = document.createElement("p");
+
+//     if (country.includes(searchValue)) {
+//       result.textContent = box.dataset.country;
+//       searchResult.appendChild(result);
+//     } else {
+//       result.textContent = "none";
+//     }
+//   });
+// });
+
+search.addEventListener("input", () => {
+  searchResult.textContent = "";
+  const searchValue = search.value.toLowerCase();
+  if (searchValue !== "") {
+    searchResult.style.display = "block";
+    boxesArr.forEach(function (box) {
+      const country = box.dataset.country.toLowerCase();
+      if (country.includes(searchValue)) {
+        const result = document.createElement("p");
+        result.textContent = box.dataset.country;
+        searchResult.appendChild(result);
+      }
+    });
+  } else {
+    searchResult.style.display = "none";
+  }
+});
