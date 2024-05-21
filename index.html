@@ -7,6 +7,54 @@
     <title>Document</title>
   </head>
   <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <span>Where in the world</span>
+        </div>
+        <div class="ligh-mode">
+          <span>Dark Mode</span>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="main-header">
+        <div class="searchbar">
+          <img src="assets/img/search.svg" alt="search" />
+          <input
+            id="search"
+            type="text"
+            placeholder="Search for a country..."
+          />
+        </div>
+        <div class="filter">
+          <div class="filter-button">
+            <span>Filter by region</span>
+            <img src="assets/img/arrow-down.svg" alt="arrow" />
+            <div class="filter-options">
+              <p id="filterAfrica">Africa</p>
+              <p id="filterAmerica">America</p>
+              <p id="filterAsia">Asia</p>
+              <p id="filterEurope">Europe</p>
+              <p id="filterOceania">Oceania</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-content">
+        <div class="content-box">
+          <img class="flag" src="assets/img/usa.png" alt="flag" />
+          <div class="content-text">
+            <span class="country-Name">USA</span>
+            <div class="details">
+              <p>Population: <span class="population">324,947,000</span></p>
+              <p>Region: <span class="region">America</span></p>
+              <p>Capital: <span class="capital">Washingdton, D.C.</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="assets/js/index.js"></script>
   </body>
 </html>
