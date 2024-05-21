@@ -97,36 +97,18 @@ filterAsia.addEventListener("click", () => filter("Asia"));
 filterOceania.addEventListener("click", () => filter("Oceania"));
 filterAll.addEventListener("click", () => showAll());
 
-// search.addEventListener("input", () => {
-//   if (search.value !== "") {
-//     searchResult.style.display = "block";
-//   } else {
-//     searchResult.style.display = "none";
-//   }
-
-//   boxesArr.forEach(function (box) {
-//     const country = box.dataset.country;
-//     const searchValue = search.value.toLowerCase();
-//     const result = document.createElement("p");
-
-//     if (country.includes(searchValue)) {
-//       result.textContent = box.dataset.country;
-//       searchResult.appendChild(result);
-//     } else {
-//       result.textContent = "none";
-//     }
-//   });
-// });
-
 search.addEventListener("input", () => {
   searchResult.textContent = "";
   const searchValue = search.value.toLowerCase();
+
   if (searchValue !== "") {
     searchResult.style.display = "block";
     boxesArr.forEach(function (box) {
       const country = box.dataset.country.toLowerCase();
+
       if (country.includes(searchValue)) {
         const result = document.createElement("p");
+        result.className = "result";
         result.textContent = box.dataset.country;
         searchResult.appendChild(result);
       }
